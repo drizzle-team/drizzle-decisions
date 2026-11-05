@@ -1,0 +1,30 @@
+name: check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  record-names:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check that each record has a unique number in its folder
+        run: |
+          status=0
+          for dir in */; do
+            for file in "$dir"*.md; do
+              [ -e "$file" ] || continue
+              if ! [[ "$(basename "$file")" =~ ^[0-9]{4}-[a-z0-9-]+\.md$ ]]; then
+                echo "::error file=$file::The file name must be NNNN-short-title.md."
+                status=1
+              fi
+            done
+            duplicates=$(ls "$dir" | grep -oE '^[0-9]{4}' | sort | uniq -d)
+            for number in $duplicates; do
+              echo "::error::$dir has more than one record with the number $number: $(ls "$dir" | grep "^$number-" | tr '\n' ' ')"
+              status=1
+            done
+          done
+          exit $status
