@@ -12,14 +12,6 @@ Each folder holds the records of one part of the drizzle-orm repository:
 
 A record is one Markdown file named `NNNN-short-title.md`. Each folder has its own numbers. A record names another record of the same folder as `ADR NNNN`. A record in another folder is named by its folder and number, for example `drizzle-kit/0005`.
 
-## Read the records
-
-```bash
-git clone --depth 1 https://github.com/drizzle-team/drizzle-decisions
-```
-
-Search the clone with `rg`, or open it in Obsidian with "Open folder as vault". Obsidian writes its settings to `.obsidian/`, which git ignores.
-
 ## Add a record
 
 1. Take the next free number in the folder.
