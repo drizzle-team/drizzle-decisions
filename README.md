@@ -9,6 +9,7 @@ Each folder holds the records of one part of the drizzle-orm repository:
 - `drizzle-orm/`: the `drizzle-orm` package and decisions that affect the whole repository.
 - `drizzle-kit/`: the `drizzle-kit` package.
 - `postgres/`: the Drizzle Postgres driver.
+- `drizzle-pulse/`: Drizzle Pulse, the realtime package.
 
 A record is one Markdown file named `NNNN-short-title.md`. Each folder has its own numbers. A record names another record of the same folder as `ADR NNNN`. A record in another folder is named by its folder and number, for example `drizzle-kit/0005`.
 
